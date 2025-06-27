@@ -3,10 +3,17 @@ import 'package:ai_idea_generator_flutter/src/ui/result_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-Route<dynamic> onGenRoute(RouteSettings settings) {
+Route<dynamic>? onGenRoute(RouteSettings settings) {
   return switch (settings.name) {
-    InputScreen.route => CupertinoPageRoute(builder: (context) => const InputScreen(),),
-    ResultScreen.route => CupertinoPageRoute(builder: (context) => const ResultScreen(),),
+    InputScreen.route => CupertinoPageRoute(
+      builder: (context) => const InputScreen(),
+    ),
+    ResultScreen.route => CupertinoPageRoute(
+      builder: (context) {
+        final topic = settings.arguments as String;
+        return ResultScreen(topic: topic);
+      },
+    ),
     _ => MaterialPageRoute(
       builder: (context) => ErrorWidget('Route not Found'),
     ),
