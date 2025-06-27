@@ -13,6 +13,7 @@ class ResultScreen extends StatelessWidget {
       body: Padding(
         padding: const EdgeInsets.all(16),
         child: BlocBuilder<IdeaBloc, IdeaState>(
+          bloc: IdeaBloc(),
           builder: (context, state) {
             if (state is IdeaLoading) {
               // show spinner while fetching
