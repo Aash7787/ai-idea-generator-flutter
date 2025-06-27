@@ -10,8 +10,7 @@ Route<dynamic>? onGenRoute(RouteSettings settings) {
     ),
     ResultScreen.route => CupertinoPageRoute(
       builder: (context) {
-        final topic = settings.arguments as String;
-        return ResultScreen(topic: topic);
+        return ResultScreen();
       },
     ),
     _ => MaterialPageRoute(

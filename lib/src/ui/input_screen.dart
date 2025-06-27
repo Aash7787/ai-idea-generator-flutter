@@ -1,6 +1,8 @@
+import 'package:ai_idea_generator_flutter/src/controller/bloc/idea_bloc.dart';
 import 'package:ai_idea_generator_flutter/src/ui/result_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class InputScreen extends StatefulWidget {
   const InputScreen({super.key});
@@ -16,8 +18,8 @@ class _InputScreenState extends State<InputScreen> {
 
   @override
   void initState() {
-    topicEditingController = TextEditingController();
     super.initState();
+    topicEditingController = TextEditingController();
   }
 
   @override
@@ -64,7 +66,8 @@ class _InputScreenState extends State<InputScreen> {
   void _onSubmit() {
     var topic = topicEditingController.text.trim();
     if (topic.isNotEmpty) {
-      Navigator.pushNamed(context, ResultScreen.route, arguments: topic);
+      context.read<IdeaBloc>().add(GenerateIdeas(topic));
+      Navigator.pushNamed(context, ResultScreen.route);
     }
   }
 }

@@ -10,6 +10,3 @@ class GenerateIdeas extends IdeaEvent {
   const GenerateIdeas(this.topic);
 }
 
-class ResetIdea extends IdeaEvent {
-  const ResetIdea();
-}

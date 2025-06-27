@@ -11,7 +11,6 @@ class IdeaBloc extends Bloc<IdeaEvent, IdeaState> {
   final ApiService apiService = ApiService(baseUrl: 'http://192.168.1.15:3000');
   IdeaBloc() : super(IdeaInitial()) {
     on<GenerateIdeas>(_genIdea);
-    on<ResetIdea>((event, emit) => emit(IdeaInitial()));
   }
 
   FutureOr<void> _genIdea(GenerateIdeas event, Emitter<IdeaState> emit) async {
